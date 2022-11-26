@@ -18,9 +18,10 @@
                     <x-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
                         {{ __('Permission') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
-                        {{ __('Offres') }}
+                    <x-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
+                        {{ __('Roles') }}
                     </x-nav-link>
+                
                 </div>
             </div>
 
@@ -77,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
                 {{ __('Permission') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
+                {{ __('Roles') }}
             </x-responsive-nav-link>
         </div>
 

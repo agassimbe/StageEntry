@@ -15,12 +15,16 @@ return new class extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->id();
+            $table->string('lieu');
+            $table->string("temps");
+            $table->string("salaire")->nullable();
             $table->string('titre');
             $table->text('description');
             $table->foreignId("secteur_activite_id")->constrained();
-            $table->foreignId("type_offre_id")->nullable()->constrained();
             $table->boolean("publish");
-            $table->foreignId("entreprise_id")->constrained();
+            $table->boolean("ouvert")->nullable();
+            //$table->foreignId("entreprise_id")->constrained();
+            $table->foreignId("user_id")->constrained();
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+    <a href="/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
         <h1 class="m-0 text-primary">StageEntry</h1>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -8,8 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="/" class="nav-item nav-link active">Accueil</a>
-            <a href="entreprise.index" class="nav-item nav-link">Entreprises</a>
-            <a href="offre.index" class="nav-item nav-link">Offres</a>
+            <a href="#" class="nav-item nav-link">Entreprises</a>
+            <a href="{{route('offre.list')}}" class="nav-item nav-link">
+                {{ __('Offres') }}
+            </a>
+            {{-- <a href="/" class="nav-item nav-link">Offres</a> --}}
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mon compte</a>
                 <div class="dropdown-menu rounded-0 m-0">

@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Front\CandidatureController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Student\TimetableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/offres', [CandidatureController::class, 'index'])->name('offre.list');
+    Route::get('/candidature/{offre}', [CandidatureController::class, 'show'])->name('candidature.show');
+    Route::post('/candidature', [CandidatureController::class, 'store'])->name('candidature.store');
+    Route::get('/user/{user}/candidatures', [CandidatureController::class, "user_candiatures"])->name("user.candidatures");
 
 });
 

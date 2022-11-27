@@ -36,9 +36,9 @@ class HomeController extends Controller
         } else {
             $offres->latest();
         }
-        $offres = $offres->paginate(5);
+        $offres = $offres->paginate(10);
         return view('accueil', compact('offres', 'secteurActivites'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function getClasse($secteurActivites){

@@ -11,4 +11,5 @@ Route::group([
 ], function () {
     Route::resource('permission', 'PermissionController');
     Route::resource('role', 'RoleController');
+    Route::resource('offre', 'OffreController');
 });

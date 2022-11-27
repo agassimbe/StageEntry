@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\TimetableController;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('accueil');
-});
+// Route::get('/', function () {
+//     return view('accueil');
+// });
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

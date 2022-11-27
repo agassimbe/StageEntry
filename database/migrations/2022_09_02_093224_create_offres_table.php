@@ -23,8 +23,9 @@ return new class extends Migration
             $table->foreignId("secteur_activite_id")->constrained();
             $table->boolean("publish");
             $table->boolean("ouvert")->nullable();
-            //$table->foreignId("entreprise_id")->constrained();
             $table->foreignId("user_id")->constrained();
+
+            //$table->foreignId("entreprise_id")->constrained();
             $table->timestamps();
         });
     }

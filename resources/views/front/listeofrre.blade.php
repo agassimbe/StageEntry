@@ -48,8 +48,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                                {{-- {{ $offres->appends(request()->query())->links() }} --}}
-                            <a class="btn btn-primary py-3 px-5" href="">Parcourir plus d’emplois</a>
+                                {{ $offres->appends(request()->query())->links('pagination::simple-bootstrap-5') }}
                     </div>
                 </div>
             </div>

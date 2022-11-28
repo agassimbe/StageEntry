@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('accueil');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/offres', [CandidatureController::class, 'index'])->name('offre.list');
+
 
 
 Route::get('/dashboard', function () {
@@ -37,7 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/offres', [CandidatureController::class, 'index'])->name('offre.list');
     Route::get('/candidature/{offre}', [CandidatureController::class, 'show'])->name('candidature.show');
     Route::post('/candidature', [CandidatureController::class, 'store'])->name('candidature.store');
     Route::get('/user/{user}/candidatures', [CandidatureController::class, "user_candiatures"])->name("user.candidatures");

@@ -45,9 +45,9 @@ class CandidatureController extends Controller
         } else {
             $offres->latest();
         }
-        $offres = $offres->paginate(10);
+        $offres = $offres->paginate(5);
         return view('candidature.index', compact('offres'))
-        ->with('i', (request()->input('page', 1) - 1) * 10);
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
      * Show the form for creating a new resource.

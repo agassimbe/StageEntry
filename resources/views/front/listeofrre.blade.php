@@ -43,7 +43,7 @@
                                                     {{ __('Postulez maintenant') }}
                                                 </a>
                                             </div>
-                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date : {{ $offre->created_at->format('d-m-Y') }}</small>
+                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date : {{ $offre->created_at->format('j M Y, g:i A') }}</small>
                                         </div>
                                     </div>
                                 </div>

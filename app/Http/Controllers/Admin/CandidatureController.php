@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidature;
 use App\Models\Offre;
 use App\Models\Role;
 use App\Models\SecteurActivite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class OffreController extends Controller
+class CandidatureController extends Controller
 {
 
     function __construct()
@@ -27,27 +28,26 @@ class OffreController extends Controller
      */
     public function index()
     {
-        $offres = (new Offre)->newQuery();
-        if (request()->has('search')) {
-            $offres->where('titre', 'Like', '%' . request()->input('search') . '%');
-        }
-        if (request()->query('sort')) {
-            $attribute = request()->query('sort');
-            $sort_order = 'ASC';
-            if (strncmp($attribute, '-', 1) === 0) {
-                $sort_order = 'DESC';
-                $attribute = substr($attribute, 1);
-            }
-            $offres->orderBy($attribute, $sort_order);
-        } else {
-            $offres->latest();
-        }
-        $offres = $offres->paginate(5);
-        return view('admin.offre.index', compact('offres'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+       $candidatures = $this->getCandidatures(auth()->user()?->id);
+        //$candidatures = (new Candidature())->newQuery();
 
-        // $c = $this->getCandidatures(auth()->user()?->id);
-        // echo json_encode($c);
+        // if (request()->has('search')) {
+        //     $candidatures->where('name', 'Like', '%' . request()->input('search') . '%');
+        // }
+        // if (request()->query('sort')) {
+        //     $attribute = request()->query('sort');
+        //     $sort_order = 'ASC';
+        //     if (strncmp($attribute, '-', 1) === 0) {
+        //         $sort_order = 'DESC';
+        //         $attribute = substr($attribute, 1);
+        //     }
+        //     $candidatures->orderBy($attribute, $sort_order);
+        // } else {
+        //     $candidatures->latest();
+        // }
+        $candidatures = $candidatures;
+        return view('admin.candidature.index', compact('candidatures'));
+
     }
 
     /**
@@ -149,7 +149,7 @@ class OffreController extends Controller
         $candidatures = DB::table('candidatures')
 			->join('users', 'candidatures.user_id', '=', 'users.id')
             ->join('offres', 'candidatures.offre_id', '=', 'offres.id')
-            ->select('users.name', 'candidatures.cv', 'candidatures.message')
+            ->select('users.name','candidatures.id', 'candidatures.cv', 'candidatures.message')
 			->where('offres.user_id', '=', $userId)
             ->get();
 

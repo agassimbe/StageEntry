@@ -74,10 +74,9 @@ class CandidatureController extends Controller
         ]);
 
         $data['user_id'] = auth()->user()?->id;
-        dd($request);
         if ($request->hasFile("cv")) {
             $cv = $request->cv;
-            $fileName = str_replace(" ", "_", $cv);
+            $fileName = str_replace(" ", "_", auth()->user()?->name);
             $filePath = $cv->storeAs("cv", $fileName, "public");
             $data['cv']  = $filePath;
 
